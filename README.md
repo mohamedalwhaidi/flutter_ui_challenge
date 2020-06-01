@@ -7,4 +7,4 @@ Flutter Ui examples
 This project is to show case flutter UI capabilities and show some UI coding
 
 
-For help with you projects and hire our services email us on [mailto](mohamedalwhaidi@gmail.com)
+For help with you projects and hire our services email us on [Our Email](mailto:mohamedalwhaidi@gmail.com)
