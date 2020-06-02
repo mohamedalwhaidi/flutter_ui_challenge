@@ -10,11 +10,19 @@ class Profile1 extends StatefulWidget {
 class _Profile1State extends State<Profile1> {
   // To obtain user related information
   Profile profile = ProfileProvider.getProfile();
-
   Color _colorOfAddress = Colors.grey.shade800;
-
   var _aboutMe = TextStyle(color: Colors.grey.shade400);
+  bool _visible = false;
 
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 500),(){
+      setState(() {
+        _visible = true;
+      });
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -86,12 +94,17 @@ class _Profile1State extends State<Profile1> {
   }
 
   Widget _imageProfile(BuildContext context) {
-    return Positioned(
-        top: MediaQuery.of(context).size.height * 0.22,
+    return AnimatedPositioned(
+      duration:  Duration(milliseconds: 200),
+        top: _visible ? MediaQuery.of(context).size.height * 0.22 : MediaQuery.of(context).size.height * 0.2,
         left: MediaQuery.of(context).size.height * 0.05,
-        child: CircleAvatar(
-          backgroundImage: ExactAssetImage('assets/shared/mohamed.jpg'),
-          minRadius: 45,
+        child: AnimatedOpacity(
+          duration: Duration(milliseconds: 200),
+          opacity: _visible ? 1 : 0,
+          child: CircleAvatar(
+            backgroundImage: ExactAssetImage('assets/shared/mohamed.jpg'),
+            minRadius: 45,
+          ),
         ));
   }
 
@@ -105,7 +118,7 @@ class _Profile1State extends State<Profile1> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           _columnOfInfo(),
-          _following(context),
+          _bottomBar(context),
         ],
       ),
     );
@@ -120,9 +133,7 @@ class _Profile1State extends State<Profile1> {
           profile.user.name,
           style: TextStyle(fontWeight: FontWeight.w900,fontSize: 18),
         ),
-        SizedBox(
-          height: 5,
-        ),
+        SizedBox(height: 5),
         Row(
           children: <Widget>[
             Icon(Icons.location_on,color: _colorOfAddress,),
@@ -145,35 +156,31 @@ class _Profile1State extends State<Profile1> {
     );
   }
 
-  Widget _following(BuildContext context) {
-    return Positioned(
+  Widget _bottomBar(BuildContext context) {
+    return AnimatedOpacity(
+      opacity: _visible ? 1 : 0,
+      duration: Duration(milliseconds: 500),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Column(
             children: <Widget>[
-              Text('Followers',style: _aboutMe,),
-              SizedBox(
-                height: 2,
-              ),
+              Text('Followers', style: _aboutMe),
+              SizedBox(height: 2),
               Text(profile.followers.toString()),
             ],
           ),
           Column(
             children: <Widget>[
-              Text('Following',style: _aboutMe,),
-              SizedBox(
-                height: 2,
-              ),
+              Text('Following', style: _aboutMe),
+              SizedBox(height: 2),
               Text(profile.following.toString()),
             ],
           ),
           Column(
             children: <Widget>[
-              Text('Friends',style: _aboutMe,),
-              SizedBox(
-                height: 2,
-              ),
+              Text('Friends', style: _aboutMe),
+              SizedBox(height: 2),
               Text(profile.friends.toString()),
             ],
           ),
