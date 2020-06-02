@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterui001/profiles/profile3/profile_3.dart';
 import 'profiles/profile1/profile_1.dart';
 import 'profiles/profile2/profile_2.dart';
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Flutter UI",
-      home: Profile2(),
+      home: Profile3(),
       debugShowCheckedModeBanner: false,
     );
   }
