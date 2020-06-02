@@ -95,12 +95,12 @@ class _Profile1State extends State<Profile1> {
 
   Widget _imageProfile(BuildContext context) {
     return AnimatedPositioned(
-      duration:  Duration(milliseconds: 200),
+      duration:  Duration(milliseconds: 500),
         top: _visible ? MediaQuery.of(context).size.height * 0.22 : MediaQuery.of(context).size.height * 0.2,
         left: MediaQuery.of(context).size.height * 0.05,
         child: AnimatedOpacity(
-          duration: Duration(milliseconds: 200),
-          opacity: _visible ? 1 : 0,
+          duration: Duration(milliseconds: 500),
+          opacity: _visible ? 1 : 0.5,
           child: CircleAvatar(
             backgroundImage: ExactAssetImage('assets/shared/mohamed.jpg'),
             minRadius: 45,

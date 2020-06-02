@@ -21,6 +21,20 @@ class _Profile2State extends State<Profile2> {
 
   TextStyle _styleOfNumFollowing = TextStyle(
       fontSize: 18, fontWeight: FontWeight.w700, color: Colors.grey.shade800);
+  bool _visible1 = false;
+  bool _visible2 = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 700), () {
+      setState(() {
+        _visible1 = true;
+      });
+    }).then((_) {
+      _visible2 = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,9 +122,13 @@ class _Profile2State extends State<Profile2> {
         ),
         Align(
           alignment: Alignment.center,
-          child: CircleAvatar(
-            backgroundImage: ExactAssetImage('assets/shared/mohamed.jpg'),
-            maxRadius: 40,
+          child: AnimatedOpacity(
+            duration: Duration(milliseconds: 500),
+            opacity: _visible1 ? 1 : 0,
+            child: CircleAvatar(
+              backgroundImage: ExactAssetImage('assets/shared/mohamed.jpg'),
+              maxRadius: 40,
+            ),
           ),
         ),
       ],
@@ -143,9 +161,7 @@ class _Profile2State extends State<Profile2> {
       left: 0,
       child: Stack(
         children: <Widget>[
-          Container(
-            color: Colors.white,
-          ),
+          Container(color: Colors.white),
           Padding(
             padding: EdgeInsets.all(12),
             child: Column(
@@ -162,37 +178,41 @@ class _Profile2State extends State<Profile2> {
   }
 
   Widget _rowOfFollowing(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Column(
-          children: <Widget>[
-            Text('Followers'.toUpperCase(), style: _follow),
-            SizedBox(height: 4),
-            Text(profile.followers.toString(), style: _styleOfNumFollowing),
-          ],
-        ),
-        Column(
-          children: <Widget>[
-            Text('Following'.toUpperCase(), style: _follow),
-            SizedBox(height: 4),
-            Text(
-              profile.following.toString(),
-              style: _styleOfNumFollowing,
-            ),
-          ],
-        ),
-        Column(
-          children: <Widget>[
-            Text('Friends'.toUpperCase(), style: _follow),
-            SizedBox(height: 4),
-            Text(
-              profile.friends.toString(),
-              style: _styleOfNumFollowing,
-            ),
-          ],
-        ),
-      ],
+    return AnimatedOpacity(
+      duration: Duration(milliseconds: 500),
+      opacity: _visible2 ? 1 : 0,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Text('Followers'.toUpperCase(), style: _follow),
+              SizedBox(height: 4),
+              Text(profile.followers.toString(), style: _styleOfNumFollowing),
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              Text('Following'.toUpperCase(), style: _follow),
+              SizedBox(height: 4),
+              Text(
+                profile.following.toString(),
+                style: _styleOfNumFollowing,
+              ),
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              Text('Friends'.toUpperCase(), style: _follow),
+              SizedBox(height: 4),
+              Text(
+                profile.friends.toString(),
+                style: _styleOfNumFollowing,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
