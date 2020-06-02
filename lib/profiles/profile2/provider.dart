@@ -10,7 +10,9 @@ class ProfileProvider {
             name: 'Mohamed AlWhaidi',
             address: '677 Tal HAWA',
             about:
-            "This is about me, so it dose not care, CurvePainter class extends"
+            "This is about me, so it dose not care, mm CurvePainter class extends"
+                " CustomPainter and overrides paint method and shouldRepaint method,CurvePainter"
+                " CustomPainter and overrides paint method and shouldRepaint method,CurvePainter"
                 " CustomPainter and overrides paint method and shouldRepaint method,CurvePainter"
                 " class extends CustomPainter and overrides paint method and shouldRepaint method."),
         followers: 2318,
