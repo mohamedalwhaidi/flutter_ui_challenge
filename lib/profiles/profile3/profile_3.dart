@@ -16,9 +16,26 @@ class _Profile3State extends State<Profile3> {
   TextStyle _textStyleAddress = TextStyle(
       fontWeight: FontWeight.w500, fontSize: 14, color: Colors.black45);
   TextStyle _follow = TextStyle(color: Colors.grey.shade400, fontSize: 14);
-
   TextStyle _styleOfNumFollowing = TextStyle(
       fontSize: 18, fontWeight: FontWeight.w700, color: Colors.grey.shade800);
+
+  bool _visible = false;
+  bool _visible2 = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 500), () {
+      setState(() {
+        _visible = true;
+      });
+    });
+    Future.delayed(Duration(seconds: 1), () {
+      setState(() {
+        _visible2 = true;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,10 +108,11 @@ class _Profile3State extends State<Profile3> {
             Divider(height: 30, thickness: 1),
             _rowOfFollowing(context),
             Divider(height: 30, thickness: 1),
-            _photos(context),
-            _aboutMeContent(context),
+            AnimatedOpacity(
+                duration: Duration(seconds: 1),opacity: _visible2 ? 1:0, child: _photos(context)),
+            AnimatedOpacity( duration: Duration(seconds: 1),opacity: _visible2 ? 1:0,child: _aboutMeContent(context)),
             SizedBox(height: 15),
-            _friends(context),
+            AnimatedOpacity( duration: Duration(seconds: 1),opacity: _visible2 ? 1:0,child: _friends(context)),
           ],
         ),
       ),
@@ -102,13 +120,19 @@ class _Profile3State extends State<Profile3> {
   }
 
   Widget _profileImage(BuildContext context) {
-    return Positioned(
-      top: MediaQuery.of(context).size.height * .07 - 50,
+    double finalPosition = MediaQuery.of(context).size.height * 0.07 - 50;
+    double startPosition = MediaQuery.of(context).size.height * 0.07 - 75;
+    return AnimatedPositioned(
+      duration: Duration(milliseconds: 400),
+      top: _visible ? finalPosition : startPosition,
       left: MediaQuery.of(context).size.width / 2 - 50,
-//      bottom: 0,
-      child: CircleAvatar(
-        backgroundImage: ExactAssetImage('assets/shared/mohamed.jpg'),
-        maxRadius: 40,
+      child: AnimatedOpacity(
+        duration: Duration(milliseconds: 500),
+        opacity: _visible ? 1 : 0,
+        child: CircleAvatar(
+          backgroundImage: ExactAssetImage('assets/shared/mohamed.jpg'),
+          maxRadius: 40,
+        ),
       ),
     );
   }
@@ -132,8 +156,10 @@ class _Profile3State extends State<Profile3> {
       child: MaterialButton(
         color: Colors.red.shade800,
         onPressed: () {},
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        child: AnimatedPadding(
+          duration: Duration(milliseconds: 500),
+          padding: EdgeInsets.symmetric(
+              horizontal: _visible ? 16 : 2, vertical: 10),
           child: Text(
             'FOLLOW',
             style: TextStyle(color: Colors.white),

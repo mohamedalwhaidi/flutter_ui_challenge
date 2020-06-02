@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Flutter UI",
-      home: Profile2(),
+      home: Profile3(),
       debugShowCheckedModeBanner: false,
     );
   }
