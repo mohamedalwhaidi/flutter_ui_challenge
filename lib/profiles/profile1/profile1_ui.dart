@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui001/profiles/profile1/provider.dart';
-import 'package:flutterui001/profiles/profile1/user.dart';
+import 'package:flutterui001/profiles/profile1/profile.dart';
+import 'package:flutterui001/profiles/profile1/profile_provider.dart';
 
 class Profile1 extends StatefulWidget {
   @override

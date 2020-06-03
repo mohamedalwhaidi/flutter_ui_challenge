@@ -1,7 +1,7 @@
 /*
 * This class return a profile and It differs from provider in state management [MVP]
 */
-import 'package:flutterui001/profiles/profile2/user.dart';
+import 'package:flutterui001/profiles/profile2/profile.dart';
 
 class ProfileProvider {
   static Profile getProfile() {

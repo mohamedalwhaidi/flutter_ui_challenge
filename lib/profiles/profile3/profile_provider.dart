@@ -1,4 +1,4 @@
-import 'package:flutterui001/profiles/profile3/user.dart';
+import 'package:flutterui001/profiles/profile3/profile.dart';
 
 class ProfileProvider {
   static Profile getProfile() {

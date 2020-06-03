@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterui001/profiles/profile3/provider.dart';
-import 'package:flutterui001/profiles/profile3/user.dart';
+import 'package:flutterui001/profiles/profile3/profile.dart';
+import 'package:flutterui001/profiles/profile3/profile_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Profile3 extends StatefulWidget {
