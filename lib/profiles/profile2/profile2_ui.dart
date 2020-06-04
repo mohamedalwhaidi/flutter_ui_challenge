@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutterui001/profiles/profile2/profile.dart';
 import 'package:flutterui001/profiles/profile2/profile_provider.dart';
+import 'package:flutterui001/profiles/profile3/profile3_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Profile2 extends StatefulWidget {
@@ -75,13 +76,14 @@ class _Profile2State extends State<Profile2> {
   Widget _appBar(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
-      leading: IconButton(
-        icon: Icon(
-          Icons.dehaze,
-          color: Colors.white,
-        ),
-        onPressed: () {},
-      ),
+      actions: <Widget>[
+        IconButton(icon:Icon( Icons.arrow_forward), onPressed: (){
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Profile3()),
+          );
+        })
+      ],
     );
   }
 
@@ -260,7 +262,7 @@ class _Profile2State extends State<Profile2> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: ExactAssetImage('assets/shared/mohamed.jpg'),
+                      image: ExactAssetImage('assets/shared/Safadi.jpg'),
                       fit: BoxFit.cover),
                 ),
               );

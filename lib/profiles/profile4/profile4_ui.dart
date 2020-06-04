@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterui001/profiles/profile4/profile.dart';
 import 'package:flutterui001/profiles/profile4/profile_provider.dart';
+import 'package:flutterui001/profiles/profile5/profile5_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Profile4 extends StatefulWidget {
@@ -61,17 +62,16 @@ class _Profile4State extends State<Profile4> {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back,
-          color: Colors.white,
-        ),
-        onPressed: () {},
-      ),
       actions: <Widget>[
         Padding(
           padding: EdgeInsets.only(right: 14),
-          child: Icon(Icons.more_vert),
+          child: IconButton(
+              icon: Icon(Icons.arrow_forward,color: Colors.white,), onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Profile5()),
+            );
+          }),
         ),
       ],
     );

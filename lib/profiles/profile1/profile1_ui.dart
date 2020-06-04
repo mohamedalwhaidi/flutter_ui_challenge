@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui001/profiles/profile1/profile.dart';
 import 'package:flutterui001/profiles/profile1/profile_provider.dart';
+import 'package:flutterui001/profiles/profile2/profile2_ui.dart';
 
 class Profile1 extends StatefulWidget {
   @override
@@ -77,10 +78,14 @@ class _Profile1State extends State<Profile1> {
       actions: <Widget>[
         IconButton(
           icon: Icon(
-            Icons.settings,
+            Icons.arrow_forward,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Profile2()));
+            },
         ),
       ],
     );

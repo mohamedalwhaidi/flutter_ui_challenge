@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterui001/profiles/profile3/profile.dart';
 import 'package:flutterui001/profiles/profile3/profile_provider.dart';
+import 'package:flutterui001/profiles/profile4/profile4_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Profile3 extends StatefulWidget {
@@ -74,15 +75,17 @@ class _Profile3State extends State<Profile3> {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      leading: IconButton(
-        icon: Icon(
-          Icons.keyboard_backspace,
-          color: Colors.white,
-        ),
-        onPressed: () {},
-      ),
       actions: <Widget>[
-        Icon(Icons.more_vert),
+        Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: IconButton(
+                icon: Icon(Icons.arrow_forward,color: Colors.white,), onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Profile4()),
+              );
+            }),
+        ),
       ],
     );
   }
@@ -236,7 +239,7 @@ class _Profile3State extends State<Profile3> {
                     borderRadius: BorderRadius.circular(12),
                     shape: BoxShape.rectangle,
                     image: DecorationImage(
-                        image: ExactAssetImage('assets/shared/mohamed.jpg'),
+                        image: ExactAssetImage('assets/shared/Safadi.jpg'),
                         fit: BoxFit.cover),
                   ),
                 );
