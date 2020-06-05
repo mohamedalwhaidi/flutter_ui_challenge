@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'profiles/profile5/profile5_ui.dart';
+import 'package:flutterui001/chats/chat1/chat_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Flutter UI",
-      home: Profile5(),
+      home: ChatList(),
       debugShowCheckedModeBanner: false,
     );
   }

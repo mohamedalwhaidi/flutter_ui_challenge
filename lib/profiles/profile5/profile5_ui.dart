@@ -20,6 +20,12 @@ class _Profile5State extends State<Profile5>
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _tabController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData(primaryIconTheme: IconThemeData(color: Colors.black)),
