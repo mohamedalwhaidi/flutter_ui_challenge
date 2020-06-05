@@ -77,12 +77,14 @@ class _Profile2State extends State<Profile2> {
     return AppBar(
       backgroundColor: Colors.transparent,
       actions: <Widget>[
-        IconButton(icon:Icon( Icons.arrow_forward), onPressed: (){
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Profile3()),
-          );
-        })
+        IconButton(
+            icon: Icon(Icons.arrow_forward),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Profile3()),
+              );
+            })
       ],
     );
   }

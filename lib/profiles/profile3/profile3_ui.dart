@@ -77,14 +77,18 @@ class _Profile3State extends State<Profile3> {
       elevation: 0,
       actions: <Widget>[
         Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: IconButton(
-                icon: Icon(Icons.arrow_forward,color: Colors.white,), onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Profile4()),
-              );
-            }),
+          padding: const EdgeInsets.only(right: 10),
+          child: IconButton(
+              icon: Icon(
+                Icons.arrow_forward,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Profile4()),
+                );
+              }),
         ),
       ],
     );
@@ -112,10 +116,18 @@ class _Profile3State extends State<Profile3> {
             _rowOfFollowing(context),
             Divider(height: 30, thickness: 1),
             AnimatedOpacity(
-                duration: Duration(seconds: 1),opacity: _visible2 ? 1:0, child: _photos(context)),
-            AnimatedOpacity( duration: Duration(seconds: 1),opacity: _visible2 ? 1:0,child: _aboutMeContent(context)),
+                duration: Duration(seconds: 1),
+                opacity: _visible2 ? 1 : 0,
+                child: _photos(context)),
+            AnimatedOpacity(
+                duration: Duration(seconds: 1),
+                opacity: _visible2 ? 1 : 0,
+                child: _aboutMeContent(context)),
             SizedBox(height: 15),
-            AnimatedOpacity( duration: Duration(seconds: 1),opacity: _visible2 ? 1:0,child: _friends(context)),
+            AnimatedOpacity(
+                duration: Duration(seconds: 1),
+                opacity: _visible2 ? 1 : 0,
+                child: _friends(context)),
           ],
         ),
       ),
@@ -161,8 +173,8 @@ class _Profile3State extends State<Profile3> {
         onPressed: () {},
         child: AnimatedPadding(
           duration: Duration(milliseconds: 500),
-          padding: EdgeInsets.symmetric(
-              horizontal: _visible ? 16 : 2, vertical: 10),
+          padding:
+              EdgeInsets.symmetric(horizontal: _visible ? 16 : 2, vertical: 10),
           child: Text(
             'FOLLOW',
             style: TextStyle(color: Colors.white),
@@ -266,7 +278,8 @@ class _Profile3State extends State<Profile3> {
             child: ListView(
               children: <Widget>[
                 Text(_profile.user.about,
-                    style: TextStyle(fontSize: 16, color: Colors.grey.shade600)),
+                    style:
+                        TextStyle(fontSize: 16, color: Colors.grey.shade600)),
               ],
             ),
           ),
@@ -277,7 +290,7 @@ class _Profile3State extends State<Profile3> {
 
   Widget _friends(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, top: 10,bottom: 10),
+      padding: const EdgeInsets.only(left: 16, top: 10, bottom: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -18,12 +18,13 @@ class _Profile1State extends State<Profile1> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 500),(){
+    Future.delayed(Duration(milliseconds: 500), () {
       setState(() {
         _visible = true;
       });
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -83,9 +84,8 @@ class _Profile1State extends State<Profile1> {
           ),
           onPressed: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Profile2()));
-            },
+                context, MaterialPageRoute(builder: (context) => Profile2()));
+          },
         ),
       ],
     );
@@ -100,8 +100,10 @@ class _Profile1State extends State<Profile1> {
 
   Widget _imageProfile(BuildContext context) {
     return AnimatedPositioned(
-      duration:  Duration(milliseconds: 500),
-        top: _visible ? MediaQuery.of(context).size.height * 0.22 : MediaQuery.of(context).size.height * 0.2,
+        duration: Duration(milliseconds: 500),
+        top: _visible
+            ? MediaQuery.of(context).size.height * 0.22
+            : MediaQuery.of(context).size.height * 0.2,
         left: MediaQuery.of(context).size.height * 0.05,
         child: AnimatedOpacity(
           duration: Duration(milliseconds: 500),
@@ -136,26 +138,29 @@ class _Profile1State extends State<Profile1> {
       children: <Widget>[
         Text(
           profile.user.name,
-          style: TextStyle(fontWeight: FontWeight.w900,fontSize: 18),
+          style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
         ),
         SizedBox(height: 5),
         Row(
           children: <Widget>[
-            Icon(Icons.location_on,color: _colorOfAddress,),
-            Text(profile.user.address,style: TextStyle(color: _colorOfAddress),),
+            Icon(
+              Icons.location_on,
+              color: _colorOfAddress,
+            ),
+            Text(
+              profile.user.address,
+              style: TextStyle(color: _colorOfAddress),
+            ),
           ],
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 16),
-          child: Text("ABOUT ME",style: _aboutMe),
+          child: Text("ABOUT ME", style: _aboutMe),
         ),
         Container(
           width: MediaQuery.of(context).size.width * .90,
-          child: Text(
-            profile.user.about,
-            softWrap: true,
-              style: TextStyle(fontSize: 18)
-          ),
+          child: Text(profile.user.about,
+              softWrap: true, style: TextStyle(fontSize: 18)),
         ),
       ],
     );

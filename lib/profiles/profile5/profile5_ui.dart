@@ -151,7 +151,7 @@ class _Profile5State extends State<Profile5>
 
   Widget _photos(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 20,right: 18,left: 18,bottom: 16),
+      padding: EdgeInsets.only(top: 20, right: 18, left: 18, bottom: 16),
       child: GridView.count(
         mainAxisSpacing: 16,
         crossAxisSpacing: 16,
@@ -170,7 +170,7 @@ class _Profile5State extends State<Profile5>
 
   Widget _videos(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 20,right: 18,left: 18,bottom: 16),
+      padding: EdgeInsets.only(top: 20, right: 18, left: 18, bottom: 16),
       child: GridView.count(
         mainAxisSpacing: 16,
         crossAxisSpacing: 16,
@@ -189,7 +189,7 @@ class _Profile5State extends State<Profile5>
 
   Widget _posts(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 20,right: 18,left: 18,bottom: 16),
+      padding: EdgeInsets.only(top: 20, right: 18, left: 18, bottom: 16),
       child: GridView.count(
         mainAxisSpacing: 16,
         crossAxisSpacing: 16,
@@ -208,7 +208,7 @@ class _Profile5State extends State<Profile5>
 
   Widget _friends(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 20,right: 18,left: 18,bottom: 16),
+      padding: EdgeInsets.only(top: 20, right: 18, left: 18, bottom: 16),
       child: GridView.count(
         mainAxisSpacing: 16,
         crossAxisSpacing: 16,

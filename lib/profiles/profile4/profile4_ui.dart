@@ -66,12 +66,16 @@ class _Profile4State extends State<Profile4> {
         Padding(
           padding: EdgeInsets.only(right: 14),
           child: IconButton(
-              icon: Icon(Icons.arrow_forward,color: Colors.white,), onPressed: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Profile5()),
-            );
-          }),
+              icon: Icon(
+                Icons.arrow_forward,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Profile5()),
+                );
+              }),
         ),
       ],
     );
