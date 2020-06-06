@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterui001/chats/chat2/chat_screen2.dart';
 
-import '../conversion.dart';
+import '../conversation.dart';
 import '../provider_messges.dart';
 
 class ConversionList extends StatefulWidget {
@@ -10,10 +11,10 @@ class ConversionList extends StatefulWidget {
 }
 
 class _ConversionListState extends State<ConversionList> {
-  static List<List<Conversion>> conversations = [
-    ProviderMessage.getConversion(),
-    ProviderMessage.getConversion(),
-    ProviderMessage.getConversion(),
+  static List<List<Conversation>> conversations = [
+    ProviderMessage.getConversations(),
+    ProviderMessage.getConversations(),
+    ProviderMessage.getConversations(),
   ];
 
   Widget build(BuildContext context) {
@@ -43,21 +44,31 @@ class _ConversionListState extends State<ConversionList> {
     return List.generate(
       conversations[position].length,
       (index) {
-        return Card(
-          margin: EdgeInsets.only(bottom: 18),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
-          child: Padding(
-            padding:
-                const EdgeInsets.only(top: 10, bottom: 10, left: 16, right: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                _picture(context, position, index),
-                _nameAndConversion(context, position, index),
-                _timeOfConversion(context, position, index),
-              ],
+        return InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      ChatScreen2(ProviderMessage.getConversation(), 'Mo5')),
+            );
+          },
+          child: Card(
+            margin: EdgeInsets.only(bottom: 18),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  top: 10, bottom: 10, left: 16, right: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  _picture(context, position, index),
+                  _nameAndConversion(context, position, index),
+                  _timeOfConversion(context, position, index),
+                ],
+              ),
             ),
           ),
         );
@@ -77,17 +88,20 @@ class _ConversionListState extends State<ConversionList> {
   }
 
   Widget _nameAndConversion(BuildContext context, int position, int index) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          conversations[position][index].users[0].name,
-          style: TextStyle(fontWeight: FontWeight.w700),
-        ),
-        SizedBox(height: 5),
-        Text(conversations[position][index].messages.last.body,
-            style: TextStyle(color: Colors.grey.shade400)),
-      ],
+    return Transform.translate(
+      offset: Offset(-20, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            conversations[position][index].users[0].name,
+            style: TextStyle(fontWeight: FontWeight.w700),
+          ),
+          SizedBox(height: 5),
+          Text(conversations[position][index].messages.last.body,
+              style: TextStyle(color: Colors.grey.shade400)),
+        ],
+      ),
     );
   }
 
