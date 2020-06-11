@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui001/chats/chat2/chat_screen2.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'provider_messges.dart';
 import 'tabs/inbox.dart';
 
 class ChatList extends StatefulWidget {

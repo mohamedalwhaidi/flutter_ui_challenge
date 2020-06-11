@@ -65,6 +65,7 @@ class _ConversionListState extends State<ConversionList> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   _picture(context, position, index),
+                  SizedBox(width: 10),
                   _nameAndConversion(context, position, index),
                   _timeOfConversion(context, position, index),
                 ],

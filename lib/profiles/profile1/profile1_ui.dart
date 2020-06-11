@@ -40,7 +40,7 @@ class _Profile1State extends State<Profile1> {
 
   Widget _imageOfAppBar(BuildContext context) {
     return Image.asset(
-      'assets/profiles/profile1.jpg',
+      'assets/profiles/screenShot1.jpg',
       fit: BoxFit.cover,
       width: double.infinity,
       height: MediaQuery.of(context).size.height * 0.45,
