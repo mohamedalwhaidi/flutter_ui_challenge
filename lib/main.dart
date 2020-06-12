@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui001/chats/chat1/chat_list.dart';
+import 'package:flutterui001/registrations/registration2/registration2.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Flutter UI",
 //      home: ChatScreen2(conversation,'Mo5'),
-      home: ChatList(),
+      home: Registration2(),
       debugShowCheckedModeBanner: false,
     );
   }
