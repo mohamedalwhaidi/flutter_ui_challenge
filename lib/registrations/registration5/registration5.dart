@@ -1,30 +1,25 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterui001/registrations/registration4/background1.dart';
-import 'package:flutterui001/registrations/registration4/background2.dart';
+import 'package:flutterui001/registrations/registration5/backgroundCircles.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Registration4 extends StatefulWidget {
+class Registration5 extends StatefulWidget {
   @override
-  _Registration4State createState() => _Registration4State();
+  _Registration5State createState() => _Registration5State();
 }
 
-class _Registration4State extends State<Registration4> {
+class _Registration5State extends State<Registration5> {
   TextEditingController _emailController;
   TextEditingController _passwordController;
   Key _key = GlobalKey<FormState>();
-  bool _visible = false;
   bool _obscureText = true;
+  Size _sizeOfCustomPaints = Size(double.infinity, double.infinity);
 
   @override
   void initState() {
     super.initState();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
-    Future.delayed(Duration(milliseconds: 500), () {
-      setState(() {
-        _visible = true;
-      });
-    });
   }
 
   @override
@@ -43,52 +38,60 @@ class _Registration4State extends State<Registration4> {
       ),
       child: Stack(
         children: <Widget>[
-          Container(color: Color(0xFF04192A)),
+          Container(color: Colors.grey.shade900),
           CustomPaint(
-            painter: Background2(),
-            size: Size(double.infinity, double.infinity),
+            painter: BackgroundCircle1(),
+            size: _sizeOfCustomPaints,
           ),
           CustomPaint(
-            painter: Background1(),
-            size: Size(double.infinity, double.infinity),
-            child: Scaffold(
-              backgroundColor: Colors.transparent,
-              appBar: AppBar(
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-              ),
-              body: Stack(
-                children: <Widget>[
-                  _imageProfile(context),
-                  _title(context),
-                  _form(context),
-                ],
-              ),
-            ),
+            painter: BackgroundCircle2(),
+            size: _sizeOfCustomPaints,
           ),
+          CustomPaint(
+            painter: BackgroundCircle3(),
+            size: _sizeOfCustomPaints,
+          ),
+          CustomPaint(
+            painter: BackgroundCircle4(),
+            size: _sizeOfCustomPaints,
+          ),
+          CustomPaint(
+            painter: BackgroundCircle5(),
+            size: _sizeOfCustomPaints,
+          ),
+          _form(context),
         ],
       ),
     );
   }
 
-  Widget _imageProfile(BuildContext context) {
-    return AnimatedPositioned(
-      duration: Duration(milliseconds: 500),
-      top: _visible
-          ? MediaQuery.of(context).size.height * 0.20
-          : MediaQuery.of(context).size.height * 0.18,
-      left: MediaQuery.of(context).size.height * 0.2 - 25,
-      child: AnimatedOpacity(
-        duration: Duration(milliseconds: 500),
-        opacity: _visible ? 1 : 0.5,
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.4,
-          height: MediaQuery.of(context).size.width * 0.4,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: Colors.white, width: 3),
-            image: DecorationImage(
-                image: ExactAssetImage('assets/shared/mohamed.jpg')),
+  Widget _form(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      body: Align(
+        alignment: Alignment.bottomCenter,
+        child: SingleChildScrollView(
+          child: Form(
+            key: _key,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 48),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  _title(context),
+                  _emailForm(context),
+                  _passwordForm(context),
+                  _signInButton(context),
+                  _rowOfCreateAnAccount(context),
+                  SizedBox(height: 50),
+                ],
+              ),
+            ),
           ),
         ),
       ),
@@ -96,12 +99,8 @@ class _Registration4State extends State<Registration4> {
   }
 
   Widget _title(BuildContext context) {
-    return Positioned(
-      top: 0,
-      right: 0,
-      left: 0,
-      // So as not to exceed the image
-      bottom: MediaQuery.of(context).size.height * 0.25,
+    return Padding(
+      padding: EdgeInsets.only(bottom: 15),
       child: Theme(
         data: ThemeData(primaryColor: Colors.white),
         child: Column(
@@ -120,59 +119,20 @@ class _Registration4State extends State<Registration4> {
     );
   }
 
-  Widget _form(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: SingleChildScrollView(
-        child: Form(
-          key: _key,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              // To make Column widgets start from below
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                _pleaseLogin(context),
-                _emailForm(context),
-                _passwordForm(context),
-                _signInButton(context),
-                _rowOfCreateAnAccount(context),
-                SizedBox(height: 30)
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _pleaseLogin(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 28),
-      child: Text(
-        'Please login to continue',
-        style: TextStyle(color: Colors.white),
-      ),
-    );
-  }
-
   Widget _emailForm(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 1),
+      padding: EdgeInsets.only(bottom: 5),
       child: TextFormField(
         style: TextStyle(color: Colors.black),
         keyboardType: TextInputType.emailAddress,
         controller: _emailController,
         decoration: InputDecoration(
-          fillColor: Colors.white,
+          fillColor: Colors.white24,
           filled: true,
-          prefixIcon: Icon(Icons.email, color: Colors.grey.shade500),
+          prefixIcon: Icon(Icons.email, color: Colors.white),
           hintText: 'email@address.com',
-//          labelText: 'You email',
-//          labelStyle: TextStyle(color: Colors.grey.shade500, fontSize: 16),
           hintStyle: TextStyle(
-            color: Colors.grey.shade500,
+            color: Colors.white60,
             fontSize: 12,
           ),
           enabledBorder:
@@ -192,9 +152,9 @@ class _Registration4State extends State<Registration4> {
       controller: _passwordController,
       obscureText: _obscureText,
       decoration: InputDecoration(
-        fillColor: Colors.white,
+        fillColor: Colors.white24,
         filled: true,
-        prefixIcon: Icon(Icons.vpn_key, color: Colors.grey.shade500),
+        prefixIcon: Icon(Icons.vpn_key, color: Colors.white),
         suffixIcon: IconButton(
           onPressed: () {
             setState(() {
@@ -203,18 +163,13 @@ class _Registration4State extends State<Registration4> {
           },
           icon: Icon(
             _obscureText ? Icons.visibility_off : Icons.remove_red_eye,
-            color: Colors.grey.shade500,
+            color: Colors.white60,
           ),
         ),
-//        labelText: 'Password',
         alignLabelWithHint: true,
-//        labelStyle: TextStyle(
-//          color: Colors.grey.shade500,
-//          fontSize: 16,
-//        ),
         hintText: '*************',
         hintStyle: TextStyle(
-          color: Colors.grey.shade500,
+          color: Colors.white60,
           fontSize: 12,
           letterSpacing: 5,
         ),
@@ -229,10 +184,10 @@ class _Registration4State extends State<Registration4> {
 
   Widget _signInButton(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(top: 10, bottom: 50),
       child: Align(
         child: MaterialButton(
-          color: Colors.deepOrange,
+          color: Color(0xffD4A915),
           onPressed: () {},
           child: Text(
             'SIGN IN',
@@ -264,7 +219,7 @@ class _Registration4State extends State<Registration4> {
             style: TextStyle(
                 fontSize: 12,
                 decoration: TextDecoration.underline,
-                color: Colors.deepOrange),
+                color: Color(0xffD4A915)),
           ),
         ),
       ],
