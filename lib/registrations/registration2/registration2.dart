@@ -115,6 +115,7 @@ class _Registration1State extends State<Registration2> {
 
   Widget _emailForm(BuildContext context) {
     return TextFormField(
+      style: TextStyle(color: Colors.white),
       keyboardType: TextInputType.emailAddress,
       controller: _emailController,
       decoration: InputDecoration(
@@ -126,9 +127,9 @@ class _Registration1State extends State<Registration2> {
         ),
         labelStyle: TextStyle(color: Colors.white, fontSize: 14),
         enabledBorder:
-            UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+        UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
         border:
-            UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+        UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
         focusColor: Colors.white,
       ),
     );

@@ -130,6 +130,7 @@ class _Registration3State extends State<Registration3> {
     return Padding(
       padding: const EdgeInsets.only(right: 100),
       child: TextFormField(
+        style: TextStyle(color: Colors.white),
         keyboardType: TextInputType.emailAddress,
         controller: _emailController,
         decoration: InputDecoration(
@@ -141,9 +142,9 @@ class _Registration3State extends State<Registration3> {
           ),
           labelStyle: TextStyle(color: Colors.white, fontSize: 16),
           enabledBorder:
-              UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+          UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
           border:
-              UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+          UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
           focusColor: Colors.white,
         ),
       ),
