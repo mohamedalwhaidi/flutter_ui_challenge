@@ -206,12 +206,7 @@ class _Registration4State extends State<Registration4> {
             color: Colors.grey.shade500,
           ),
         ),
-//        labelText: 'Password',
         alignLabelWithHint: true,
-//        labelStyle: TextStyle(
-//          color: Colors.grey.shade500,
-//          fontSize: 16,
-//        ),
         hintText: '*************',
         hintStyle: TextStyle(
           color: Colors.grey.shade500,

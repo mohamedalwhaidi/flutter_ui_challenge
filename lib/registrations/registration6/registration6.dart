@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui001/registrations/registration5/backgroundCircles.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Registration5 extends StatefulWidget {
+class Registration6 extends StatefulWidget {
   @override
-  _Registration5State createState() => _Registration5State();
+  _Registration6State createState() => _Registration6State();
 }
 
-class _Registration5State extends State<Registration5> {
+class _Registration6State extends State<Registration6> {
   TextEditingController _emailController;
   TextEditingController _passwordController;
-  Key _key = GlobalKey<FormState>();
+  final Key _key = GlobalKey<FormState>();
   bool _obscureText = true;
-  Size _sizeOfCustomPaints = Size(double.infinity, double.infinity);
-  OutlineInputBorder _inputBorder = OutlineInputBorder(borderSide: BorderSide(color: Colors.white));
+   Color _blue;
+   Color _red ;
+  Color _orange ;
+  static BorderRadius _borderRadius = BorderRadius.all(Radius.circular(50));
+  final InputBorder _inputBorder = OutlineInputBorder(
+      borderRadius: _borderRadius,
+      borderSide: BorderSide(color: Colors.grey.shade900));
 
-  InputBorder _focusedBorder =  OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.blue.shade700));
-
+  final InputBorder _focusedBorder = OutlineInputBorder(borderRadius: _borderRadius,
+      borderSide: BorderSide(color: Colors.white));
 
   @override
   void initState() {
     super.initState();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
+    _blue = Color(0XFF2273D7);
+     _red = Color(0XFFEB4137);
+     _orange = Color(0XFFFFA810);
   }
 
   @override
@@ -42,30 +48,17 @@ class _Registration5State extends State<Registration5> {
       ),
       child: Stack(
         children: <Widget>[
-          Container(color: Colors.grey.shade900),
-          CustomPaint(
-            painter: BackgroundCircle1(),
-            size: _sizeOfCustomPaints,
-          ),
-          CustomPaint(
-            painter: BackgroundCircle2(),
-            size: _sizeOfCustomPaints,
-          ),
-          CustomPaint(
-            painter: BackgroundCircle3(),
-            size: _sizeOfCustomPaints,
-          ),
-          CustomPaint(
-            painter: BackgroundCircle4(),
-            size: _sizeOfCustomPaints,
-          ),
-          CustomPaint(
-            painter: BackgroundCircle5(),
-            size: _sizeOfCustomPaints,
-          ),
+          _backgroundImage(context),
           _form(context),
         ],
       ),
+    );
+  }
+  Widget _backgroundImage(BuildContext context) {
+    return Image.asset(
+      'assets/registration/waves_bg_reg6.jpg',
+      fit: BoxFit.fill,
+      width: MediaQuery.of(context).size.width,
     );
   }
 
@@ -82,7 +75,7 @@ class _Registration5State extends State<Registration5> {
           child: Form(
             key: _key,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 48),
+              padding: EdgeInsets.symmetric(horizontal: 50),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +85,7 @@ class _Registration5State extends State<Registration5> {
                   _passwordForm(context),
                   _signInButton(context),
                   _rowOfCreateAnAccount(context),
-                  SizedBox(height: 50),
+                  // SizedBox(height: 50),
                 ],
               ),
             ),
@@ -104,18 +97,31 @@ class _Registration5State extends State<Registration5> {
 
   Widget _title(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 15),
+      padding: EdgeInsets.only(bottom: 20),
       child: Theme(
         data: ThemeData(primaryColor: Colors.white),
         child: Column(
           children: <Widget>[
-            Text('Welcome back to', style: TextStyle(color: Colors.white)),
-            Text(
-              'BooStock',
-              style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+            Text('Welcome back to', style: TextStyle(color: Colors.white,fontSize: 16)),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Flutter',
+                  style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: _red),
+                ),
+                Text(
+                  'Marathon',
+                  style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: _orange),
+                ),
+              ],
             ),
           ],
         ),
@@ -127,37 +133,41 @@ class _Registration5State extends State<Registration5> {
     return Padding(
       padding: EdgeInsets.only(bottom: 5),
       child: TextFormField(
-        style: TextStyle(color: Colors.black),
+        style: TextStyle(color: Colors.white),
         keyboardType: TextInputType.emailAddress,
         controller: _emailController,
         decoration: InputDecoration(
-          fillColor: Colors.white24,
+          fillColor: Colors.black45,
           filled: true,
-          prefixIcon: Icon(Icons.email, color: Colors.white),
+          prefixIcon: Padding(
+            padding: const EdgeInsets.only(left: 12),
+            child: Icon(Icons.email, color: Colors.white),
+          ),
           hintText: 'email@address.com',
           hintStyle: TextStyle(
             color: Colors.white60,
             fontSize: 12,
           ),
-          enabledBorder:
-          _inputBorder,
-          border:
-          _inputBorder,
-          focusedBorder: _focusedBorder,
-        ),
+          enabledBorder: _inputBorder,
+          border: _inputBorder,
+          focusedBorder:_focusedBorder,
+          ),
       ),
     );
   }
 
   Widget _passwordForm(BuildContext context) {
     return TextFormField(
-      style: TextStyle(color: Colors.black),
+      style: TextStyle(color: Colors.white),
       controller: _passwordController,
       obscureText: _obscureText,
       decoration: InputDecoration(
-        fillColor: Colors.white24,
+        fillColor: Colors.black45,
         filled: true,
-        prefixIcon: Icon(Icons.vpn_key, color: Colors.white),
+        prefixIcon: Padding(
+          padding: const EdgeInsets.only(left: 12),
+          child: Icon(Icons.vpn_key, color: Colors.white),
+        ),
         suffixIcon: IconButton(
           onPressed: () {
             setState(() {
@@ -170,61 +180,63 @@ class _Registration5State extends State<Registration5> {
           ),
         ),
         alignLabelWithHint: true,
-        hintText: '*************',
+        hintText: '**********',
         hintStyle: TextStyle(
           color: Colors.white60,
           fontSize: 12,
-          letterSpacing: 5,
+          letterSpacing: 10,
         ),
-        enabledBorder:
-        _inputBorder,
-        border:_inputBorder,
-        focusedBorder: _focusedBorder,
+        enabledBorder: _inputBorder,
+        border: _inputBorder,
+        focusedBorder:_focusedBorder,
       ),
     );
   }
 
   Widget _signInButton(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 10, bottom: 50),
+      padding: EdgeInsets.only(top: 5, bottom: 20),
       child: Align(
         child: MaterialButton(
-          color: Color(0xffD4A915),
+          color: _red,
           onPressed: () {},
           child: Text(
             'SIGN IN',
             style: TextStyle(color: Colors.white),
           ),
           minWidth: double.infinity,
-          height: 40,
+          height: 50,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(4))),
+              borderRadius:   BorderRadius.all(Radius.circular(30))),
         ),
       ),
     );
   }
 
   Widget _rowOfCreateAnAccount(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          'Don\'t have an account?',
-          style: TextStyle(color: Colors.white, fontSize: 12),
-        ),
-        FlatButton(
-          padding: EdgeInsets.only(right: 16),
-          onPressed: () {},
-          child: Text(
-            'Create One',
-            style: TextStyle(
-                fontSize: 12,
-                decoration: TextDecoration.underline,
-                color: Color(0xffD4A915)),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 45),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'Don\'t have an account?',
+            style: TextStyle(color: Colors.white, fontSize: 12),
           ),
-        ),
-      ],
+          FlatButton(
+            padding: EdgeInsets.only(right: 16),
+            onPressed: () {},
+            child: Text(
+              'Create One',
+              style: TextStyle(
+                  fontSize: 12,
+                  decoration: TextDecoration.underline,
+                  color: _blue),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
