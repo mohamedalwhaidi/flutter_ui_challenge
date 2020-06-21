@@ -32,7 +32,7 @@ class _ChatScreen2State extends State<ChatScreen2> {
   @override
   void initState() {
     super.initState();
-    _textEditingController = _textEditingController;
+    _textEditingController = TextEditingController();
   }
 
   @override

@@ -42,7 +42,7 @@ class _Registration1State extends State<Registration1> {
 
   Widget _backgroundImage(BuildContext context) {
     return Image.asset(
-      'assets/registration/screenShotRegistration1.jpg',
+      'assets/registration/reg1.jpg',
       fit: BoxFit.cover,
       width: MediaQuery.of(context).size.height,
     );

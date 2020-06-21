@@ -210,7 +210,7 @@ class _Registration3State extends State<Registration3> {
 
   Widget _buttonGo(BuildContext context) {
     return Transform.translate(
-      offset: Offset(240, -140),
+      offset: Offset(290, -140),
       child: InkWell(
         onTap: () {},
         child: Container(
